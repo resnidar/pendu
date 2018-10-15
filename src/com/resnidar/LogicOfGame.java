@@ -24,11 +24,28 @@ public class LogicOfGame {
     }
 
     public void wordPrepar(){
+        String word = null;
+        int wordlength = 0;
         try {
-            String word = InspectCSV.read();
-            System.out.println(word);
+            word = InspectCSV.read();
         } catch (IOException e) {
             System.out.println("il y a un probleme dans la lecture du csv");
+        }
+        for (int i = 0; i < word.length(); i++)
+        {
+            wordlength = i + 1;
+        }
+        char wordTab[] = new char[wordlength];
+        for (int i = 0; i < word.length() ;i++)
+        {
+            System.out.println(i);
+            wordTab[i] = word.charAt(i);
+        }
+        System.out.println(wordTab[2]);
+        wordTab[2] = 'b';
+        for (int i = 0; i < word.length(); i++)
+        {
+            System.out.print(wordTab[i]);
         }
     }
 }
