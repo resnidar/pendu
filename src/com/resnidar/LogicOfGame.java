@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class LogicOfGame {
+   /* public enum message{
+        bienvenue,
+        start
+    }*/
     public void logic() {
         Scanner sc = new Scanner(System.in);
         display(1);
@@ -15,7 +19,7 @@ public class LogicOfGame {
     public void display(int number) {
 
         if (number == 1) {
-            System.out.println("Bienvenue dans le jeu de pendu ,je suppose que vous connaissez les régles alors commencons !");
+            System.out.println("Bienvenue dans le jeu du pendu ,je suppose que vous connaissez les régles alors commencons !");
         } else if (number == 2) {
             System.out.println("voulez vous lancé la partie ?");
         } else {
@@ -43,6 +47,13 @@ public class LogicOfGame {
     }
 
     public void Game(char[] wordTab) {
-        /* en cour de travail */
+        int wordLength;
+        wordLength = 0;
+        for (int i = 0; i < wordTab.length; i++) {
+            wordLength = i;
+        }
+        System.out.println("dans la méthode Game ,wordLength est égale a " + wordLength);
+        char underscoreTab[] = new char[wordLength];
+        for (int i = 0; wordLength)
     }
 }
