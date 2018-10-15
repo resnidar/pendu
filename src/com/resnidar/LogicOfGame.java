@@ -68,5 +68,6 @@ public class LogicOfGame {
                 System.out.print(" ");
             }
         }
+        System.out.println("la partie est terminé ,il manque encore quelque logique de jeu indispensable ,sa arrive !");
     }
 }
