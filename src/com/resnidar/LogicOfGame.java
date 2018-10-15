@@ -14,9 +14,9 @@ public class LogicOfGame {
     public void display(int number) {
 
         if (number == 1) {
-            System.out.println("Bienvenue dans le jeu du pendu ,je suppose que vous connaissez les régles alors commencons !");
+            System.out.println("Bienvenue dans le jeu du pendu ,je suppose que vous connaissez les regles alors commencons !");
         } else if (number == 2) {
-            System.out.println("voulez vous lancé la partie ?");
+            System.out.println("la partie commence");
         } else {
             System.out.println("erreur");
         }
@@ -28,7 +28,7 @@ public class LogicOfGame {
         try {
             word = InspectCSV.read();
         } catch (IOException e) {
-            System.out.println("il y a un probleme dans la lecture du csv");
+            System.out.println("il y a un probleme dans la lecture du csv,veuillez verifier que vous avez bien wordList.csv a la racine du jeu");
         }
         for (int i = 0; i < word.length(); i++) {
             wordlength = i + 1;
@@ -56,6 +56,7 @@ public class LogicOfGame {
          * ici se trouve tout le systeme permettant de remplacé des underscores par le resultat
          */
         for (int i = 0; i < 7 ; i++){
+            System.out.println("veuillez entrer un caractere");
             char inChar = sc.next().charAt(0);
             for(int j = 0; j < wordLength; j++){
                 if (inChar == wordTab[j]) {
