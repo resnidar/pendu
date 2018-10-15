@@ -4,12 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class LogicOfGame {
-   /* public enum message{
-        bienvenue,
-        start
-    }*/
     public void logic() {
-        Scanner sc = new Scanner(System.in);
         display(1);
         display(2);
         char[] wordTab = wordPrepar();
@@ -40,20 +35,37 @@ public class LogicOfGame {
         }
         char wordTab[] = new char[wordlength];
         for (int i = 0; i < word.length(); i++) {
-            System.out.println(i);
             wordTab[i] = word.charAt(i);
         }
         return wordTab;
     }
 
     public void Game(char[] wordTab) {
+        Scanner sc = new Scanner(System.in);
         int wordLength;
         wordLength = 0;
         for (int i = 0; i < wordTab.length; i++) {
-            wordLength = i;
+            wordLength = i + 1;
         }
-        System.out.println("dans la méthode Game ,wordLength est égale a " + wordLength);
         char underscoreTab[] = new char[wordLength];
-        for (int i = 0; wordLength)
+        for (int i = 0; i < wordLength; i++)
+        {
+            underscoreTab[i] = '_';
+        }
+        /**
+         * ici se trouve tout le systeme permettant de remplacé des underscores par le resultat
+         */
+        for (int i = 0; i < 7 ; i++){
+            char inChar = sc.next().charAt(0);
+            for(int j = 0; j < wordLength; j++){
+                if (inChar == wordTab[j]) {
+                    underscoreTab[j] = wordTab[j];
+                }
+            }
+            for (int j = 0; j < wordLength ;j++){
+                System.out.print(underscoreTab[j]);
+                System.out.print(" ");
+            }
+        }
     }
 }
