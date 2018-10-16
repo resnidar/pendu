@@ -5,8 +5,7 @@ import java.util.Scanner;
 
 public class LogicOfGame {
     public void logic() {
-        System.out.println("Bienvenue dans le jeu du pendu ,je suppose que vous connaissez" +
-                " les regles alors commencons !");
+        System.out.println("Bienvenue dans le jeu du pendu ,je suppose que vous connaissez les regles alors commencons !");
         System.out.println("la partie commence");
         char[] wordTab = wordPrepar();
         Game(wordTab);
@@ -42,10 +41,15 @@ public class LogicOfGame {
         {
             underscoreTab[i] = '_';
         }
+        for (int j = 0; j < wordLength;j++){
+            System.out.print(underscoreTab[j]);
+            System.out.print(" ");
+        }
         /**
          * ici se trouve tout le systeme permettant de remplacé des underscores par le resultat
          */
         for (int i = 0; i < 7 ; i++){
+            int counter = 0;
             System.out.println("veuillez entrer un caractere");
             char inChar = sc.next().charAt(0);
             for(int j = 0; j < wordLength; j++){
@@ -56,6 +60,17 @@ public class LogicOfGame {
             for (int j = 0; j < wordLength ;j++){
                 System.out.print(underscoreTab[j]);
                 System.out.print(" ");
+            }
+            /**
+             * vérification a chaque fin de tour ,si il reste des underscore ont continue ,sinon fin de la partie
+             */
+            for (int j = 0; j < wordLength; j++){
+                if (underscoreTab[j] == '_')
+                    counter++;
+            }
+            if (counter == 0) {
+                System.out.println("vous avez gagner ! la partie va se relancé");
+                this.logic();
             }
         }
         System.out.println("la partie est terminé ,il manque encore quelque logique de jeu indispensable ,sa arrive !");
