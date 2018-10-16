@@ -5,21 +5,11 @@ import java.util.Scanner;
 
 public class LogicOfGame {
     public void logic() {
-        display(1);
-        display(2);
+        System.out.println("Bienvenue dans le jeu du pendu ,je suppose que vous connaissez" +
+                " les regles alors commencons !");
+        System.out.println("la partie commence");
         char[] wordTab = wordPrepar();
         Game(wordTab);
-    }
-
-    public void display(int number) {
-
-        if (number == 1) {
-            System.out.println("Bienvenue dans le jeu du pendu ,je suppose que vous connaissez les regles alors commencons !");
-        } else if (number == 2) {
-            System.out.println("la partie commence");
-        } else {
-            System.out.println("erreur");
-        }
     }
 
     public char[] wordPrepar() {
