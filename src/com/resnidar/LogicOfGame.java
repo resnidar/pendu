@@ -37,42 +37,53 @@ public class LogicOfGame {
             wordLength = i + 1;
         }
         char underscoreTab[] = new char[wordLength];
-        for (int i = 0; i < wordLength; i++)
-        {
+        for (int i = 0; i < wordLength; i++) {
             underscoreTab[i] = '_';
         }
-        for (int j = 0; j < wordLength;j++){
+        for (int j = 0; j < wordLength; j++) {
             System.out.print(underscoreTab[j]);
             System.out.print(" ");
         }
         /**
          * ici se trouve tout le systeme permettant de remplacé des underscores par le resultat
          */
-        for (int i = 0; i < 7 ; i++){
-            int counter = 0;
+        for (int i = 0; i < 7; i++) {
             System.out.println("veuillez entrer un caractere");
             char inChar = sc.next().charAt(0);
-            for(int j = 0; j < wordLength; j++){
+            for (int j = 0; j < wordLength; j++) {
                 if (inChar == wordTab[j]) {
                     underscoreTab[j] = wordTab[j];
                 }
             }
-            for (int j = 0; j < wordLength ;j++){
+            for (int j = 0; j < wordLength; j++) {
                 System.out.print(underscoreTab[j]);
                 System.out.print(" ");
             }
-            /**
-             * vérification a chaque fin de tour ,si il reste des underscore ont continue ,sinon fin de la partie
-             */
-            for (int j = 0; j < wordLength; j++){
+        }
+
+        /**
+         * vérification a chaque fin de tour ,si il reste des underscore ont continue ,sinon fin de la partie
+         */
+            int counter = 0;
+            for (int j = 0; j < wordLength; j++) {
                 if (underscoreTab[j] == '_')
                     counter++;
             }
             if (counter == 0) {
                 System.out.println("vous avez gagner ! la partie va se relancé");
-                this.logic();
+                System.out.println("voulez vous relancé la partie ? et regagné ! \r\ny : pour relancé \r\nn'importe quel touches pour quitter");
+                char restart = sc.next().charAt(0);
+                if (restart == 'y')
+                    this.logic();
+                else
+                    System.out.println("fin de la partie ,le programme se quitte");
+            } else {
+                System.out.println("vous avez perdu ,voulez vous recommencé ?" + "\r\ny : recommencer" + "\r\nn'importe quel touche pour quitter");
+                char restart = sc.next().charAt(0);
+                if (restart == 'y')
+                    this.logic();
+                else
+                    System.out.println("fin de la partie ,le programme se quitte");
             }
         }
-        System.out.println("la partie est terminé ,il manque encore quelque logique de jeu indispensable ,sa arrive !");
     }
-}
