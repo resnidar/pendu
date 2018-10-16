@@ -16,23 +16,24 @@ public class LogicOfGame {
         int wordlength = 0;
         try {
             word = InspectCSV.read();
+            for (int i = 0; i < word.length(); i++) {
+                wordlength = i + 1;
+            }
+            char wordTab[] = new char[wordlength];
+            for (int i = 0; i < word.length(); i++) {
+                wordTab[i] = word.charAt(i);
+            }
+            return wordTab;
         } catch (IOException e) {
             System.out.println("il y a un probleme dans la lecture du csv,veuillez verifier que vous avez bien wordList.csv a la racine du jeu");
+            System.exit(1);
         }
-        for (int i = 0; i < word.length(); i++) {
-            wordlength = i + 1;
-        }
-        char wordTab[] = new char[wordlength];
-        for (int i = 0; i < word.length(); i++) {
-            wordTab[i] = word.charAt(i);
-        }
-        return wordTab;
+        return null;
     }
 
     public void Game(char[] wordTab) {
         Scanner sc = new Scanner(System.in);
-        int wordLength;
-        wordLength = 0;
+        int wordLength = 0;
         for (int i = 0; i < wordTab.length; i++) {
             wordLength = i + 1;
         }
@@ -40,10 +41,7 @@ public class LogicOfGame {
         for (int i = 0; i < wordLength; i++) {
             underscoreTab[i] = '_';
         }
-        for (int j = 0; j < wordLength; j++) {
-            System.out.print(underscoreTab[j]);
-            System.out.print(" ");
-        }
+        printUndescore(wordLength, underscoreTab);
         /**
          * ici se trouve tout le systeme permettant de remplacé des underscores par le resultat
          */
@@ -55,10 +53,7 @@ public class LogicOfGame {
                     underscoreTab[j] = wordTab[j];
                 }
             }
-            for (int j = 0; j < wordLength; j++) {
-                System.out.print(underscoreTab[j]);
-                System.out.print(" ");
-            }
+            printUndescore(wordLength, underscoreTab);
         }
 
         /**
@@ -86,4 +81,11 @@ public class LogicOfGame {
                     System.out.println("fin de la partie ,le programme se quitte");
             }
         }
+
+    public void printUndescore(int wordLength, char[] underscoreTab) {
+        for (int j = 0; j < wordLength; j++) {
+            System.out.print(underscoreTab[j]);
+            System.out.print(" ");
+        }
     }
+}
