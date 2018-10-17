@@ -54,6 +54,9 @@ public class LogicOfGame {
                 }
             }
             printUndescore(wordLength, underscoreTab);
+            /**
+             * c et ici qu'est géré notre vie
+             */
             if (stop == 0) {
                 life--;
                 System.out.println("Vous avez perdu une vie ,il vous en reste : " + life);
