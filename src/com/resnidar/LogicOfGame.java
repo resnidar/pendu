@@ -55,32 +55,35 @@ public class LogicOfGame {
             }
             printUndescore(wordLength, underscoreTab);
         }
+        endGame(sc, wordLength, underscoreTab);
+    }
 
-        /**
-         * vérification a chaque fin de tour ,si il reste des underscore ont continue ,sinon fin de la partie
-         */
-            int counter = 0;
-            for (int j = 0; j < wordLength; j++) {
-                if (underscoreTab[j] == '_')
-                    counter++;
-            }
-            if (counter == 0) {
-                System.out.println("vous avez gagner ! la partie va se relancé");
-                System.out.println("voulez vous relancé la partie ? et regagné ! \r\ny : pour relancé \r\nn'importe quel touches pour quitter");
-                char restart = sc.next().charAt(0);
-                if (restart == 'y')
-                    this.logic();
-                else
-                    System.out.println("fin de la partie ,le programme se quitte");
-            } else {
-                System.out.println("vous avez perdu ,voulez vous recommencé ?" + "\r\ny : recommencer" + "\r\nn'importe quel touche pour quitter");
-                char restart = sc.next().charAt(0);
-                if (restart == 'y')
-                    this.logic();
-                else
-                    System.out.println("fin de la partie ,le programme se quitte");
-            }
+    /**
+     * vérification a chaque fin de tour ,si il reste des underscore ont continue ,sinon fin de la partie
+     */
+    public void endGame(Scanner sc, int wordLength, char[] underscoreTab) {
+        int counter = 0;
+        for (int j = 0; j < wordLength; j++) {
+            if (underscoreTab[j] == '_')
+                counter++;
         }
+        if (counter == 0) {
+            System.out.println("vous avez gagner ! la partie va se relancé");
+            System.out.println("voulez vous relancé la partie ? et regagné ! \r\ny : pour relancé \r\nn'importe quel touches pour quitter");
+            char restart = sc.next().charAt(0);
+            if (restart == 'y')
+                this.logic();
+            else
+                System.out.println("fin de la partie ,le programme se quitte");
+        } else {
+            System.out.println("vous avez perdu ,voulez vous recommencé ?" + "\r\ny : recommencer" + "\r\nn'importe quel touche pour quitter");
+            char restart = sc.next().charAt(0);
+            if (restart == 'y')
+                this.logic();
+            else
+                System.out.println("fin de la partie ,le programme se quitte");
+        }
+    }
 
     public void printUndescore(int wordLength, char[] underscoreTab) {
         for (int j = 0; j < wordLength; j++) {
