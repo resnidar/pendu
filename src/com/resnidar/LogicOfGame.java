@@ -34,6 +34,8 @@ public class LogicOfGame {
     public void Game(char[] wordTab) {
         Scanner sc = new Scanner(System.in);
         int wordLength = 0;
+        int life = 9;
+        int stop = 0;
         for (int i = 0; i < wordTab.length; i++) {
             wordLength = i + 1;
         }
@@ -42,22 +44,33 @@ public class LogicOfGame {
             underscoreTab[i] = '_';
         }
         printUndescore(wordLength, underscoreTab);
-        /**
-         * ici se trouve tout le systeme permettant de remplacé des underscores par le resultat
-         */
-        for (int i = 0; i < 7; i++) {
+        while (life > 0) {
             System.out.println("veuillez entrer un caractere");
             char inChar = sc.next().charAt(0);
             for (int j = 0; j < wordLength; j++) {
                 if (inChar == wordTab[j]) {
                     underscoreTab[j] = wordTab[j];
+                    stop++;
                 }
             }
             printUndescore(wordLength, underscoreTab);
+            if (stop == 0) {
+                life--;
+                System.out.println("Vous avez perdu une vie ,il vous en reste : " + life);
+            } else {
+                System.out.println("bien joué ! il vous reste " + life);
+                stop = 0;
+            }
+            boolean stopGame = true;
+            for (int i = 0; i < wordLength; i++) {
+                if (underscoreTab[i] == '_')
+                    stopGame = false;
+            }
+            if (stopGame)
+                endGame(sc, wordLength, underscoreTab);
         }
         endGame(sc, wordLength, underscoreTab);
     }
-
     /**
      * vérification a chaque fin de tour ,si il reste des underscore ont continue ,sinon fin de la partie
      */
